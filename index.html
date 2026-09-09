@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="FitStyle 3D prototype — realistic human viewer foundation for virtual fitting."
+    />
+    <title>FitStyle 3D — Human Viewer</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div>
+          <div class="eyebrow">FITSTYLE 3D · COMPONENT 1</div>
+          <h1>3D Human Fitting Foundation</h1>
+          <p>
+            Michelle.glb is the primary avatar. The scene already prepares
+            garment layers and bone-based accessory anchors so the project can
+            grow into a virtual fitting room without rebuilding the viewer.
+          </p>
+        </div>
+
+        <div id="appStatus" class="status-chip" aria-live="polite">
+          <span class="status-dot"></span>
+          <span id="statusText">Initializing</span>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="viewer-card">
+          <div class="viewer-toolbar">
+            <div>
+              <strong>Human model</strong>
+              <span id="viewerSubtitle">Loading local Michelle.glb…</span>
+            </div>
+
+            <div class="toolbar-actions">
+              <button id="retryModelButton" class="button secondary" type="button">
+                Retry Michelle
+              </button>
+              <button id="resetViewButton" class="button secondary" type="button">
+                Reset view
+              </button>
+            </div>
+          </div>
+
+          <div id="viewerContainer" class="viewer-container">
+            <canvas
+              id="humanCanvas"
+              aria-label="Interactive 3D human figure"
+            ></canvas>
+
+            <div id="viewerMessage" class="viewer-message" hidden></div>
+
+            <div class="viewer-help">
+              Drag to orbit · Scroll to zoom · Use fixed-view buttons for precise inspection
+            </div>
+          </div>
+
+          <div class="viewer-stats">
+            <div class="stat">
+              <span>Model source</span>
+              <strong id="modelSourceValue">Waiting</strong>
+            </div>
+            <div class="stat">
+              <span>Meshes</span>
+              <strong id="meshCountValue">—</strong>
+            </div>
+            <div class="stat">
+              <span>Bones</span>
+              <strong id="boneCountValue">—</strong>
+            </div>
+            <div class="stat">
+              <span>Garment layers</span>
+              <strong id="garmentLayerValue">—</strong>
+            </div>
+          </div>
+        </section>
+
+        <aside class="control-card">
+          <section class="control-section">
+            <div class="section-label">Camera</div>
+
+            <div class="button-grid">
+              <button id="frontViewButton" class="button" type="button">Front</button>
+              <button id="sideViewButton" class="button" type="button">Side</button>
+              <button id="backViewButton" class="button" type="button">Back</button>
+              <button id="threeQuarterViewButton" class="button" type="button">
+                3/4 View
+              </button>
+            </div>
+          </section>
+
+          <section class="control-section">
+            <div class="section-label">Fitting preparation</div>
+
+            <button
+              id="toggleAnchorsButton"
+              class="button full-width"
+              type="button"
+            >
+              Show accessory anchors
+            </button>
+
+            <p class="control-description">
+              Red markers show the bone-based positions prepared for hats,
+              glasses, necklaces, watches, bags, and shoes.
+            </p>
+          </section>
+
+          <section class="control-section">
+            <div class="section-label">Garment layers</div>
+
+            <div class="slot-list">
+              <div class="slot-row">
+                <span>TOP</span>
+                <strong>Shirts / jackets</strong>
+              </div>
+              <div class="slot-row">
+                <span>DRESS</span>
+                <strong>Full-body dress</strong>
+              </div>
+              <div class="slot-row">
+                <span>BOTTOM</span>
+                <strong>Pants / skirts</strong>
+              </div>
+            </div>
+
+            <p class="control-description">
+              Garments are intentionally root-level layers rather than rigid
+              chest attachments. The next garment milestone will use skinned
+              meshes that follow the same skeleton as the body.
+            </p>
+          </section>
+
+          <section class="control-section">
+            <div class="section-label">Accessory anchors</div>
+
+            <div id="accessoryList" class="slot-list">
+              <div class="slot-row">
+                <span>HEAD</span>
+                <strong>Preparing…</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="control-section">
+            <div class="section-label">Roadmap</div>
+
+            <ol class="roadmap">
+              <li class="active">Michelle human viewer</li>
+              <li class="active">Garment and accessory slot foundation</li>
+              <li>One fitted top garment</li>
+              <li>Dress mesh</li>
+              <li>Bottom garment</li>
+              <li>Body measurements and morphs</li>
+              <li>Body scan / personalized avatar</li>
+            </ol>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
